@@ -94,6 +94,7 @@
     height: 100%;
     border-radius: 8px;
     backface-visibility: hidden;
+    object-fit: cover;
 }
 
 .card__backSide {
@@ -110,11 +111,19 @@
     visibility: hidden;
 }
 
+@media (max-width: 700px) {
+    .memoryGame__the-end {
+        display: inline-block;
+        max-width: 200px
+    }
+}
+
 @media (max-width: 375px) {
     .cards {
         grid-gap: 10px;
         padding: 10px;
         height: 430px;
+        text-align: center;
     }
 
     .memoryGame__counter {
