@@ -61,6 +61,7 @@ let columns = null;
 let rows = null;
 let numberOfCards = null;
 
+let guessingCardCounter = 0;
 
 function setGrid(columns, rows) {
     cardsElement.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
@@ -142,6 +143,7 @@ function backFromGamePage() {
     attempt = 0;
 
     memoryGameTheEndInscription.classList.remove('memoryGame__the-end-opacity');
+    guessingCardCounter = 0;
 }
 
 function backFromSettingsPage() {
@@ -268,7 +270,7 @@ function flipCardsBack() {
     currentOpenCards.length = 0;
 }
 
-let guessingCardCounter = 0;
+
 
 
 function hideCards() {
