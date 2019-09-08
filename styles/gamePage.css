@@ -30,6 +30,7 @@
 .memoryGame__counter {
     font-size: 30px;
     color: red;
+    text-align: center;
 }
 
 .memoryGame__h2 {
@@ -117,7 +118,7 @@
     }
 
     .memoryGame__counter {
-        font-size: 25px;
+        font-size: 20px;
     }
 }
 

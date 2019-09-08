@@ -75,9 +75,9 @@ function getGridParameters() {
 }
 
 function getThemeCard() {
-    let themaCard = document.querySelector('input[name="style"]:checked');
-    let nameThemaCard = themaCard.value;
-    console.log(nameThemaCard);
+    const themeCard = document.querySelector('input[name="style"]:checked');
+    const  nameThemaCard = themeCard.value;
+
     return nameThemaCard;
 }
 
@@ -116,6 +116,7 @@ backButtonGame.addEventListener('click', handleClickBackButtonGame);
 
 function handleClickBackButtonGame(event) {
     backFromGamePage();
+
 }
 
 backButtonSettings.addEventListener('click', handleClickBackButtonSettings);
@@ -140,7 +141,7 @@ function backFromGamePage() {
     attemptCounter.textContent = 'Number of attempts: 00';
     attempt = 0;
 
-    memoryGameTheEndInscription.classList.remove('memoryGame__the-end-opasity');
+    memoryGameTheEndInscription.classList.remove('memoryGame__the-end-opacity');
 }
 
 function backFromSettingsPage() {
