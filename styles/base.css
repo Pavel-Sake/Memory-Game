@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.backButton {
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+
+    outline: none;
+    cursor: pointer;
+}
+
+.backButton__img {
+    width: 34px;
+    height: 34px;
+}
+
+.backButton:hover {
+    transform: scale(1.2);
+    transition: 0.3s;
+}
+
+.hiddenPage {
+    display: none;
+}
+
+.showPage {
+    display: flex;
+}

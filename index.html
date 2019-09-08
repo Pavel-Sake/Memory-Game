@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>memory game</title>
-    <link href="style.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -11,82 +11,83 @@
 <div class="startPage">
     <h1 class="startPage__h1">Memory Game</h1>
     <button class="play-button">Play</button>
-    <button class="settings-button">settings</button>
+    <button class="settings-button">Settings</button>
 
 </div>
 
 
 <div class="memoryGame hiddenPage">
-    <h2 class="memoryGame__h2">Game</h2>
-    <span class="memoryGame__counter">00</span>
-    <span class="memoryGame__the-end">the end of the game took 11 attempts</span>
-    <div class="cards">
-        <!--<div class="card" data-name="1">-->
-        <!--<img class="card__frontside" src="images/101.png" data="cES">-->
-        <!--<img class="card__backside" src="images/argyle-640x1136.png">-->
+    <div class="memoryGame__header">
+        <button class="backButton backButton__game" type="button" data-section="game">
+            <img class="backButton__img" src="images/backButton/left-arrow.svg">
+        </button>
+
+        <span class="memoryGame__counter">Number of attempts: 00</span>
     </div>
 
-    <button class="backButton backButton__gama" type="button" data-section="game">
-        <img class="backButton__img" src="images/backButton/left-arrow.svg">
-    </button>
+    <h2 class="memoryGame__h2">Game</h2>
+
+    <span class="memoryGame__the-end">The end of the game took 11 attempts</span>
+
+    <div class="cards">
+    </div>
+    <div class="empty"></div>
+
 </div>
 
 <div class="settings hiddenPage">
+    <div class="settings__header">
+        <button class="backButton backButton__settings" type="button" data-section="game">
+            <img class="backButton__img" src="images/backButton/left-arrow.svg">
+        </button>
+    </div>
+    <div class="settings__content">
+        <div class="settings__cards__number">
+            <span class="settings__label">Level of difficulty</span>
+            <div class="radio">
+                <input class="radio-input" id="number-10" type="radio" name="getCard" data-column="5" data-row="2"
+                       value="10"
+                       checked="checked">
+                <label class="radio-label" for="number-10">10 карт</label>
 
-    <div class="settings__cards__number">
-        <span class="settings__span">level of difficulty</span>
-        <div>
-            <input class="radio-imput" id="number-10" type="radio" name="getCard" data-column="5" data-row="2"
-                   value="10"
-                   checked="checked">
-            <label class="radio-lable" for="number-10">10 карт</label>
+            </div>
+            <div class="radio">
+                <input class="radio-input" id="number-12" type="radio" name="getCard" data-column="4" data-row="3"
+                       value="12">
+                <label class="radio-label" for="number-12">12 карт</label>
 
+            </div>
+            <div class="radio">
+                <input class="radio-input" id="number-16" type="radio" name="getCard" data-column="4" data-row="4"
+                       value="16">
+                <label class="radio-label" for="number-16">16 карт</label>
+
+            </div>
+            <div class="radio">
+                <input class="radio-input" id="number-18" type="radio" name="getCard" data-column="6" data-row="3"
+                       value="18">
+                <label class="radio-label" for="number-18">18 карт</label>
+
+            </div>
         </div>
-        <div>
-            <input class="radio-imput" id="number-12" type="radio" name="getCard" data-column="4" data-row="3"
-                   value="12">
-            <label class="radio-lable" for="number-12">12 карт</label>
 
-        </div>
-        <div>
-            <input class="radio-imput" id="number-16" type="radio" name="getCard" data-column="4" data-row="4"
-                   value="16">
-            <label class="radio-lable" for="number-16">16 карт</label>
-
-        </div>
-        <div>
-            <input class="radio-imput" id="number-18" type="radio" name="getCard" data-column="6" data-row="3"
-                   value="18">
-            <label class="radio-lable" for="number-18">18 карт</label>
+        <div class="settings__style">
+            <span class="settings__label">Choose a card theme</span>
+            <div class="radio">
+                <input class="radio-input" id="animals" type="radio" name="style" value="animals" checked="checked">
+                <label class="radio-label" for="animals">Animals</label>
+            </div>
+            <div class="radio">
+                <input class="radio-input" id="berriesAndFruits" type="radio" name="style" value="berriesAndFruits">
+                <label class="radio-label" for="berriesAndFruits">Berries and Fruits</label>
+            </div>
+            <div class="radio">
+                <input class="radio-input" id="friends" type="radio" name="style" value="friends">
+                <label class="radio-label" for="friends">Friends</label>
+            </div>
 
         </div>
     </div>
-
-    <div class="settings__style">
-        <span class="settings__span">choose a card theme</span>
-        <div>
-            <input class="radio-imput" id="animals" type="radio" name="style" value="animals" checked="checked">
-            <label class="radio-lable" for="animals">Animals</label>
-        </div>
-        <div>
-            <input class="radio-imput" id="berriesAndFruits" type="radio" name="style" value="berriesAndFruits">
-            <label class="radio-lable" for="berriesAndFruits">Berries and Fruits</label>
-        </div>
-        <div>
-            <input class="radio-imput" id="friends" type="radio" name="style" value="friends">
-            <label class="radio-lable" for="friends">Friends</label>
-        </div>
-        <div>
-            <input class="radio-imput" id="qqqq" type="radio" name="style">
-            <label class="radio-lable" for="qqqq">qqqqqqqqqqqqqq</label>
-        </div>
-
-    </div>
-
-    <button class="backButton backButton__settings" type="button" data-section="settings">
-        <img class="backButton__img" src="images/backButton/left-arrow.svg">
-    </button>
-
 </div>
 
 </div>

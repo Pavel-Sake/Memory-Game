@@ -1,0 +1,129 @@
+.memoryGame {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: black url("../images/background/asfalt-light.png");
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    position: relative;
+}
+
+.memoryGame__header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.backButton__game {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.memoryGame__counter {
+    font-size: 30px;
+    color: red;
+}
+
+.memoryGame__h2 {
+    font-size: 50px;
+    color: white;
+    position: relative;
+}
+
+.memoryGame__the-end {
+    font-size: 28px;
+    color: green;
+    opacity: 0;
+
+    position: absolute;
+}
+
+.memoryGame__the-end-opacity {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.cards {
+    width: 100%;
+    max-width: 930px;
+    height: 600px;
+    max-height: 80%;
+    margin: 10px;
+    padding: 20px;
+    background: #ffffff;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.card {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card__rotate {
+    transform: rotate3d(0, 1, 0, 180deg);
+}
+
+.card__frontSide, .card__backSide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    backface-visibility: hidden;
+}
+
+.card__backSide {
+    z-index: 2;
+}
+
+.card__frontSide {
+    transform: rotate3d(0, 1, 0, 180deg);
+}
+
+/*   visibilitu   */
+
+.hiddenElement {
+    visibility: hidden;
+}
+
+@media (max-width: 375px) {
+    .cards {
+        grid-gap: 10px;
+        padding: 10px;
+        height: 430px;
+    }
+
+    .memoryGame__counter {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 320px) {
+    .memoryGame {
+        min-width: 320px;
+        min-height: 568px;
+    }
+}

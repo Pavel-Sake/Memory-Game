@@ -1,0 +1,139 @@
+.settings {
+    width: 100%;
+    height: 100%;
+    background: #005e8a url("../images/background/concrete-wall-2.png");
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.settings__header {
+    position: absolute;
+    top: 0;
+
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.settings__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.settings__cards__number {
+    margin-bottom: 40px;
+}
+
+.settings__label {
+    font-size: 28px;
+    color: #cfb425;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.radio {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.radio:hover {
+    opacity: 0.6;
+}
+
+.radio-input {
+    -webkit-appearance: none;
+    position: absolute;
+}
+
+.radio-label {
+    font-size: 25px;
+    cursor: pointer;
+    margin-right: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.radio-label::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 1px solid white;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 2px;
+    left: -15px;
+    z-index: 1;
+}
+
+.radio-label::after {
+    content: "";
+    display: block;
+    background: black;
+    border-radius: 50%;
+    background-size: 13px 15px;
+
+    width: 14px;
+    height: 14px;
+
+    position: absolute;
+    top: 6px;
+    left: -11px;
+    opacity: 0;
+
+    z-index: 2;
+}
+
+.radio-input:checked + .radio-label::before {
+    background: #cfb425;
+    border: 1px solid #cfb425;
+    transition: 0.3s;
+}
+
+.radio-input:checked + .radio-label::after {
+    opacity: 1;
+    transition: 0.3s;
+}
+
+@media (max-width: 700px) {
+    .settings__span {
+        font-size: 20px;
+    }
+
+    .settings {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 375px) {
+    .settings {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 320px) {
+    .settings {
+        min-width: 320px;
+        min-height: 568px;
+    }
+
+    .settings__span {
+        font-size: 20px;
+    }
+
+    .settings {
+        flex-direction: column;
+    }
+}

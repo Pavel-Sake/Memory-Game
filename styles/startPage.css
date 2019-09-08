@@ -1,0 +1,85 @@
+.startPage {
+    width: 100%;
+    height: 100%;
+    background: #000208 url("../images/background/brick-wall.png") repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.startPage__h1 {
+    font-size: 100px;
+    text-shadow: #ded8d8 5px 5px 10px;
+}
+
+.play-button {
+    padding: 25px;
+    font-size: 100px;
+    cursor: pointer;
+    background: green;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid #007400;
+    color: #fff;
+
+    box-shadow: 4px 4px 25px 10px #9f9f9f;
+}
+
+.play-button:hover {
+    background: #006100;
+    transition: 0.3s;
+}
+
+.settings-button {
+    padding: 25px;
+    font-size: 50px;
+    cursor: pointer;
+    background: #cfb425;
+    border: 1px solid #ae9200;
+    border-radius: 8px;
+    outline: none;
+
+    box-shadow: 4px 4px 25px 10px #9f9f9f;
+}
+
+.settings-button:hover {
+    background: #9d891c;
+    transition: 0.3s;
+}
+
+@media (max-width: 700px) {
+    .startPage__h1 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 375px) {
+    .startPage__h1 {
+        font-size: 53px;
+    }
+
+    .play-button {
+        font-size: 65px;
+    }
+}
+
+@media (max-width: 320px) {
+    .startPage {
+        min-width: 320px;
+        min-height: 568px;
+    }
+
+    .startPage__h1 {
+        font-size: 53px;
+    }
+
+    .play-button {
+        font-size: 65px;
+    }
+
+    .settings-button {
+        font-size: 35px;
+    }
+}

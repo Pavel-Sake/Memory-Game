@@ -40,21 +40,19 @@ const themeCard = {
     friends,
 };
 
+let memoryGameTheEndInscription = document.querySelector('.memoryGame__the-end');
 
 const startPage = document.querySelector('.startPage');
 const gamePage = document.querySelector('.memoryGame');
 const settingsPage = document.querySelector('.settings');
 const playGameButton = document.querySelector('.play-button');
 const settingButton = document.querySelector('.settings-button');
-const backButtonGame = document.querySelector('.backButton__gama');
+const backButtonGame = document.querySelector('.backButton__game');
 const backButtonSettings = document.querySelector('.backButton__settings');
 const cardsElement = document.querySelector('.cards');
 
-
-cardsElement.addEventListener('click', handleClickCards);
-
 let attemptCounter = document.querySelector('.memoryGame__counter');
-let attemp = 0;
+let attempt = 0;
 
 let randomCardForGet = [];
 
@@ -77,7 +75,7 @@ function getGridParameters() {
 }
 
 function getThemeCard() {
-    let themaCard = document.querySelector('input[name="style"]:checked')
+    let themaCard = document.querySelector('input[name="style"]:checked');
     let nameThemaCard = themaCard.value;
     console.log(nameThemaCard);
     return nameThemaCard;
@@ -85,7 +83,7 @@ function getThemeCard() {
 
 /*   startPage   */
 
-let nmaeThemaCards = null
+let themeCardsName = null;
 
 playGameButton.addEventListener('click', handleClickPlayGame);
 
@@ -93,8 +91,8 @@ function handleClickPlayGame(event) {
     startPage.classList.add('hiddenPage');
     gamePage.classList.remove('hiddenPage');
 
-    let nameThema = getThemeCard();
-    nmaeThemaCards = themeCard[nameThema];
+    let themeName = getThemeCard();
+    themeCardsName = themeCard[themeName];
 
     getGridParameters();
     numberOfCards = columns * rows;
@@ -139,9 +137,10 @@ function backFromGamePage() {
         cardsElement.removeChild(cardsElement.firstChild);
     }
 
-    attemptCounter.textContent = '00';
-    attemp = 0;
+    attemptCounter.textContent = 'Number of attempts: 00';
+    attempt = 0;
 
+    memoryGameTheEndInscription.classList.remove('memoryGame__the-end-opasity');
 }
 
 function backFromSettingsPage() {
@@ -155,7 +154,7 @@ function getCards() {
 
     for (let j = 0; j < duplication; j++) {
         for (let i = 1; i <= (numberOfCards / duplication); i++) {
-            const card = createCard(i, nmaeThemaCards[i - 1]);
+            const card = createCard(i, themeCardsName[i - 1]);
             cards.push(card);
         }
     }
@@ -178,8 +177,8 @@ function createCard(number, imageCard) {
     cardBackSide.classList.add('card__backSide');
     cardBackSide.src = "images/argyle-640x1136.png";
 
-    card.appendChild(cardFrontSide);
     card.appendChild(cardBackSide);
+    card.appendChild(cardFrontSide);
 
     return card;
 }
@@ -189,9 +188,9 @@ function makeRandomCards(cards) {
     let temp = 0;
 
     for (let i = cards.length - 1; i > 0; i--) {
-        // другой немного рандом, скину статью
-
-        j = Math.floor(Math.random() * (i + 1));
+        const min = 0;
+        const max = cards.length;
+        j = Math.floor(Math.random() * (max - min)) + min;
 
         temp = cards[j];
         cards[j] = cards[i];
@@ -209,6 +208,8 @@ function setCardsToCardsElement(cards) {
 
 const currentOpenCards = [];
 
+cardsElement.addEventListener('click', handleClickCards);
+
 function handleClickCards(event) {
     let target = event.target.closest('.card');
 
@@ -219,80 +220,67 @@ function handleClickCards(event) {
     if (currentOpenCards[0] === target) {
         return;
     }
+
     openCard(target);
 }
 
 function openCard(cardElement) {
-    const childrenCard = cardElement.children;
-    const nameOpenCard = cardElement.dataset.name;
-
     currentOpenCards.push(cardElement);
 
-    childrenCard[0].classList.add('card__frontSide-turnOver');
-    childrenCard[1].classList.add('card__backSide-turnOver');
+    if (currentOpenCards.length < 3) {
+        cardElement.classList.toggle('card__rotate');
+    }
 
     if (currentOpenCards.length === 2) {
         comparison();
 
-        attemp++;
-
-        if (attemp < 10) {
-            attemptCounter.textContent = ` 0${attemp}`;
-        } else if (attemp => 10) {
-            attemptCounter.textContent = attemp;
-        }
+        attempt++;
+        attemptCounter.textContent = `Number of attempts: ${addZeroIfItNeed(attempt)}`;
     }
 }
 
+function addZeroIfItNeed(number) {
+    let result = number;
+
+    if (number < 10) {
+        result = `0${number}`;
+    }
+
+    return result;
+}
 
 function comparison() {
-    const firstCard = currentOpenCards[0].dataset.name;
-    const secondCard = currentOpenCards[1].dataset.name;
+    const firstCardName = currentOpenCards[0].dataset.name;
+    const secondCardName = currentOpenCards[1].dataset.name;
 
-    if (firstCard === secondCard) {
-        setTimeout(hideCards, 1000);
+    if (firstCardName === secondCardName) {
+        setTimeout(hideCards, 1500);
     } else {
-        setTimeout(flipCardsBack, 1000);
+        setTimeout(flipCardsBack, 1500);
     }
 }
 
 function flipCardsBack() {
-    /*   firstCard   */
-
-    const firsCardBackSideBackSide = currentOpenCards[0].querySelector('.card__backSide');
-    const firsCardBackSideFrontSide = currentOpenCards[0].querySelector('.card__frontSide');
-
-    firsCardBackSideFrontSide.classList.remove('card__frontSide-turnOver');
-    firsCardBackSideBackSide.classList.remove('card__backSide-turnOver');
-
-    /*   secondCard   */
-
-    const secondCardBackSideBackSide = currentOpenCards[1].querySelector('.card__backSide');
-    const secondCardBackSideFrontSide = currentOpenCards[1].querySelector('.card__frontSide');
-
-    secondCardBackSideFrontSide.classList.remove('card__frontSide-turnOver');
-    secondCardBackSideBackSide.classList.remove('card__backSide-turnOver');
+    currentOpenCards[0].classList.toggle('card__rotate');
+    currentOpenCards[1].classList.toggle('card__rotate');
 
     currentOpenCards.length = 0;
 }
 
 let guessingCardCounter = 0;
 
+
 function hideCards() {
     currentOpenCards[0].classList.add('hiddenElement');
     currentOpenCards[1].classList.add('hiddenElement');
 
+    guessingCardCounter++;
+
     currentOpenCards.length = 0;
 
-    guessingCardCounter++;
-    console.log(numberOfCards / 2);
-    console.log(guessingCardCounter);
-
     if (guessingCardCounter == (numberOfCards / 2)) {
-        console.log('функция загружается');
-        let memoryGameTheEndInscription = document.querySelector('.memoryGame__the-end');
-        memoryGameTheEndInscription.textContent = `the end of the game took ${attemp} attempts`
-        memoryGameTheEndInscription.classList.add('memoryGame__the-end-opasity');
+        memoryGameTheEndInscription.textContent = `The end of the game took ${attempt} attempts`;
+        memoryGameTheEndInscription.classList.add('memoryGame__the-end-opacity');
     }
 }
 
